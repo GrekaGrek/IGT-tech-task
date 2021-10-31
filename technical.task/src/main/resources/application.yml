@@ -1,0 +1,39 @@
+server:
+  port: 8087
+  servlet:
+    context-path: /
+
+management:
+  server:
+    port: ${server.port}
+
+spring:
+  application:
+    name: igt-technical-task
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:h2:mem:customer;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username:
+    password:
+    driver-class-name: org.h2.Driver
+    platform: sqlserver
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: validate
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  flyway:
+    url:
+    user: igt
+    password: gotodev!
+
+logging:
+  level:
+    ROOT: INFO
+
+rest-api:
+  base-url:
+    customers: "http://localhost:7070"
